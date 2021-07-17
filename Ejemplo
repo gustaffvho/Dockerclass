@@ -1,0 +1,40 @@
+ps -ef >>> Procesos listados
+docker run --help | grep limit >>>>>>> ver ayuda
+
+https://github.com/aruiz-personal/docker
+
+
+==============LAboratorio===========
+docker image pull nginx  >>>>> descarga una imagen con libreria Nginx 
+docker images >>>>>>>>> ver imagenes
+docker run -d -p 8080:80 nginx >>>>>
+docker ps >>>>>> ver contenedores 
+docker stop "nombre" >>>> se detiene
+docker start "nombre" >>>> se inicia
+docker ps -a >>>> se listtan los containg up / down
+docker rm "nombre" >>>> se elimina contains
+docker rmi "nombre imagen " >>>> borrar imagen
+docker rm -f $(docker ps -aq)
+docker run -d --name Mycontainer Nginx >>>>>> se crea contain con nombre 
+docker run -d -p 8080:80 --name Mycontainer Nginx
+docker insperct "nombre">>>>>> ver caracteristicas
+
+docker rm -f $(docker container ls -aq)
+
+
+#######Dockfile############
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y nginx
+CMD ["nginx","-g","daemon off;"]
+###########
+docker build . >>>>>>>>> craer imagen
+docker build -t test:v2 . >>>>>>>>> craer imagen con nombre
+
+
+###########ejemplo###########
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y nginx
+COPY index.html /var/www/html/
+CMD nginx -g 'daemon off;'
